@@ -1,0 +1,1360 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Data Collections 2 (Dictionaries, Sets) and Importing Modules"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Tasks Today:\n",
+    "\n",
+    "1) Dictionary <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; a) Declaring (key, value) <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; b) Accessing Values <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; ------ Exercise #1 - Print the eye color of each person in a double nested dict <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; c) Adding New Pairs <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; d) Modifying Values <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; e) Removing Key, Value Pairs <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; f) Looping a Dictionary <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; g) Looping Only Keys <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; h) Looping Only Values <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; ------ Exercise #2 - Create a Function that Prints All Key Value Pairs within a print .format()  <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; i) sorted() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; j) Lists with Dictionaries <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; k) Dictionaries with Lists <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; l) Dictionaries with Dictionaries <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; ------ Exercise #3 - Write a Function that asks someone's name and address, and then stores that into a dictionary, which prints all names and addresses after they're done putting information in...  <br>\n",
+    "2) Dictionaries vs. Lists (over time)<br>\n",
+    "3) Set <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; a) Declaring <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; b) .add() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; c) .remove() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; d) .union() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; e) .intersection() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; f) .difference() <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; g) Frozen Set <br>\n",
+    "4) Modules <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; a) Importing Entire Modules <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; b) Importing Methods Only <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; c) Using the 'as' Keyword <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; d) Creating a Module <br>\n",
+    "5) Exercises <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; a) Build a Shopping Cart <br>\n",
+    " &nbsp;&nbsp;&nbsp;&nbsp; b) Create Your Own Module <br>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Dictionary <br>\n",
+    "<p>A collection of data with 'key:value' pairs. Dictionaries are ordered as of Python 3.6</p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Declaring (key, value)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'Jordan': '333 fake street', 'Dani': '555 real street', 0: 'Here is the value for 0'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Keys should be unique.\n",
+    "# Can use interger or strings as keys.\n",
+    "# # Declaring an empty dictionary.\n",
+    "\n",
+    "# d_1 = {}\n",
+    "# d_2 = dict()\n",
+    "# print(d_2)\n",
+    "\n",
+    "# # OR declaring with key, value pairs inside of them already.\n",
+    " \n",
+    "# d_3 = {'Jordan': '333 fake street', 'Dani': '555 real street'}\n",
+    "# OR better way..\n",
+    "\n",
+    "# d_3 = {\n",
+    "#     'Jordan': '333 fake street',\n",
+    "#     'Dani': '555 real street',\n",
+    "#     0: 'Here is the value for 0'   \n",
+    "# }\n",
+    "\n",
+    "# print(d_3)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Accessing Values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "333 fake street\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "'Here is the value for 0'"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# ACCESSING VALUES\n",
+    "\n",
+    "print(d_3 ['Jordan'])\n",
+    "\n",
+    "d_3[0]\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## In-Class Exercise #1 - Print a formatted statement from the dictionary below <br>\n",
+    "<p>The output should be '2018 Chevrolet Silverado'</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2018 Chevrolet Silverado\n"
+     ]
+    }
+   ],
+   "source": [
+    "# use the dict below\n",
+    "# Grabbed dict name, key name for each value. Put into f'string.\n",
+    "# truck = {\n",
+    "#     'year': 2018,\n",
+    "#     'make': 'Chevrolet',\n",
+    "#     'model': 'Silverado'\n",
+    "# }\n",
+    "\n",
+    "# print(f\"{truck['year']} {truck['make']} {truck['model']}\")\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Adding New Pairs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'Jordan': '333 fake street', 'Dani': '555 real street', 0: 'Here is the value for 0', 'Marcus': '555 W Ontario St, Chicago, IL'}\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "{'Jordan': '333 fake street',\n",
+       " 'Dani': '555 real street',\n",
+       " 0: 'Here is the value for 0',\n",
+       " 'Marcus': '555 W Ontario St, Chicago, IL',\n",
+       " 'joel': '555 W Ontario St'}"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Syntax: dictName[newKey] = newValue\n",
+    "\n",
+    "print(d_3)\n",
+    "\n",
+    "d_3['joel'] = '555 W Ontario St'\n",
+    "\n",
+    "d_3\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Modifying Values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Jordan': '333 fake street',\n",
+       " 'Dani': '555 real street',\n",
+       " 0: 'Here is the value for 0',\n",
+       " 'Marcus': '555 W Ontario St, Chicago, IL'}"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Syntax: dictName[existingKey] = newValue\n",
+    "\n",
+    "\n",
+    "d_3['Marcus'] = '555 W Ontario St'\n",
+    "\n",
+    "d_3\n",
+    "\n",
+    "#Maybe we want to append onto existing value.\n",
+    "d_3['Marcus'] += ', Chicago, IL'\n",
+    "d_3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Removing Key, Value Pairs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Marcus': '555 W Ontario St, Chicago, IL', 'joel': '555 W Ontario St'}"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Del dictName[existingKey] Will get error unless changing key.\n",
+    "\n",
+    "\n",
+    "del d_3['Dani']\n",
+    "d_3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Looping a Dictionary"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Marcus\n",
+      "555 W Ontario St, Chicago, IL\n",
+      "Marcuss address is 555 W Ontario St, Chicago, IL\n",
+      "joel\n",
+      "555 W Ontario St\n",
+      "joels address is 555 W Ontario St\n"
+     ]
+    }
+   ],
+   "source": [
+    "# .items()\n",
+    "\n",
+    "\n",
+    "# a, b, c = 1, 2, 3\n",
+    "# print(a)\n",
+    "# print(b)\n",
+    "# print(c)\n",
+    "\n",
+    "\n",
+    "\n",
+    "for key,value in d_3.items():\n",
+    "    print(key)\n",
+    "    print(value)\n",
+    "    \n",
+    "    print(f'{key}s address is {value}')\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Looping Only Keys"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Marcus\n",
+      "joel\n",
+      "Marcus\n",
+      "joel\n"
+     ]
+    }
+   ],
+   "source": [
+    "# .keys()\n",
+    "\n",
+    "for item in d_3:\n",
+    "    print(item)\n",
+    "    \n",
+    "# Proper way to loop over keys\n",
+    "for key in d_3.keys():\n",
+    "    print(key)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Looping Only Values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "555 W Ontario St\n",
+      "555 W Ontario St\n"
+     ]
+    }
+   ],
+   "source": [
+    "# .values()\n",
+    "for key in d_3.values():\n",
+    "    print(value)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## In-Class Exercise #2 - Create a Function that Prints All Key Value Pairs within a print .format() <br>\n",
+    "<p><b>Output should be:</b><br>\n",
+    "Max has blue eyes<br>\n",
+    "Lilly has brown eyes<br>\n",
+    "Barney has blue eyes<br>\n",
+    "etc.\n",
+    "</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Max has blue eyes\n",
+      "Lilly has brown eyes\n",
+      "Barney has blue eyes\n",
+      "Larney has brown eyes\n",
+      "Ted has purple eyes\n",
+      "Max has blue eyes\n",
+      "Lilly has brown eyes\n",
+      "Barney has blue eyes\n",
+      "Larney has brown eyes\n",
+      "Ted has purple eyes\n"
+     ]
+    }
+   ],
+   "source": [
+    "# use the dict below\n",
+    "\n",
+    "people = {\n",
+    "    'Max': 'blue',\n",
+    "    'Lilly': 'brown',\n",
+    "    'Barney': 'blue',\n",
+    "    'Larney': 'brown',\n",
+    "    'Ted': 'purple'\n",
+    "}\n",
+    "\n",
+    "\n",
+    "# 1 WAY\n",
+    "\n",
+    "def colorEyes(a_dict):\n",
+    "    for key,value in a_dict.items():\n",
+    "        print(f\"{key} has {value} eyes\")\n",
+    "        \n",
+    "colorEyes(people)        \n",
+    "\n",
+    "\n",
+    "# ANOTHER WAY\n",
+    "\n",
+    "def otherFunction(b_dict):\n",
+    "    for k,v in b_dict.items():\n",
+    "        print(f\"{k} has {v} eyes\")\n",
+    "        \n",
+    "otherFunction(people)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### sorted()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['Barney', 'Larney', 'Lilly', 'Max', 'Ted']\n",
+      "['Barney', 'Larney', 'Lilly', 'Max', 'Ted']\n",
+      "[('Barney', 'blue'), ('Larney', 'brown'), ('Lilly', 'brown'), ('Max', 'blue'), ('Ted', 'purple')]\n",
+      "['blue', 'blue', 'brown', 'brown', 'purple']\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Sorts variables in order\n",
+    "# Sorted(dict.values()) or dict.keys() or dict.items()\n",
+    "\n",
+    "people = {\n",
+    "    'Max': 'blue',\n",
+    "    'Lilly': 'brown',\n",
+    "    'Barney': 'blue',\n",
+    "    'Larney': 'brown',\n",
+    "    'Ted': 'purple'\n",
+    "}\n",
+    "\n",
+    "print(sorted(people)) # Just Keys.\n",
+    "\n",
+    "print(sorted(people.keys())) # Also just Keys.\n",
+    "\n",
+    "print(sorted(people.items())) # Returns a sorted list of k,v pairs(as tuples) still sorted of the key.\n",
+    "\n",
+    "print(sorted(people.values())) # Returns list of all values sorted.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### List with Dictionaries"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "some_guy\n",
+      "some_girl\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "names = ['David', 'Justine', 'Derek', 'Terrell', 'Amber', {'some_guy': 'Adam', 'some_girl': 'Jessica'}]\n",
+    "\n",
+    "\n",
+    "# Pull item out of the dictionary within a list.\n",
+    "names[5]['some_girl']\n",
+    "\n",
+    "\n",
+    "# Get all keys from nested dictionary in a list.\n",
+    "for key in names[5].keys():\n",
+    "    print(key)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Dictionaries with Lists"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 75,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "4\n",
+      "9\n"
+     ]
+    }
+   ],
+   "source": [
+    "# be careful when using numbers as keys in dictionaries, don't confuse them with indexes\n",
+    "random_dict = {\n",
+    "    \"list_1\": [1,2,3],\n",
+    "    2: 'random data'\n",
+    "}\n",
+    "\n",
+    "random_dict[\"list_1\"][2]\n",
+    "\n",
+    "\n",
+    "# Loop through inner list and square each number.\n",
+    "\n",
+    "for num in random_dict[\"list_1\"]:\n",
+    "    print(num**2)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Dictionaries with Dictionaries"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 86,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "dict_items([('ice_cream', {'CHO': 2.99, 'VA': 3.99, 'OREO': 5.99, 'RR': [2.99, 4.99, 6.99]})])"
+      ]
+     },
+     "execution_count": 86,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# To get values, must traverse through keys\n",
+    "food_dict = {\n",
+    "    \"ice_cream\":{\n",
+    "        'CHO': 2.99,\n",
+    "        'VA': 3.99,\n",
+    "        'OREO': 5.99,\n",
+    "        'RR':  [2.99, 4.99, 6.99]\n",
+    "    }\n",
+    "}\n",
+    "\n",
+    "print(food_dict['ice_cream']['RR'][2])\n",
+    "\n",
+    "# To get Vanilla'VA'\n",
+    "food_dict['ice_cream']['VA']\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Dictionaries vs. Lists (over time) Example of RUNTIME\n",
+    "### When inputting values in a Dictionary vs List"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 87,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import time\n",
+    "\n",
+    "\n",
+    "# Generate fake dictionary\n",
+    "d = {}\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "for i in range(10000000):\n",
+    "    d[i] = 'value'\n",
+    "    \n",
+    "    \n",
+    "    \n",
+    "    \n",
+    "\n",
+    "# generate fake list\n",
+    "big_list = [x for x in range(10000000)]\n",
+    "# big_list is 0-10million\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 99,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "value\n",
+      "Elapsed time for dictionary: 0.0006339550018310547\n",
+      "9999999\n",
+      "Elapsed time for list: 1.498979091644287\n",
+      "yeah!\n",
+      "Elapsed time for dictionary lookup: 0.0001518726348876953\n",
+      "yeah here as well!\n",
+      "Elapsed time for list lookup: 0.0001499652862548828\n"
+     ]
+    }
+   ],
+   "source": [
+    "# tracking time for dictionary\n",
+    "start_time = time.time()\n",
+    "\n",
+    "print(d[9999999])\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "# In .format but could use f'string\n",
+    "end_time = time.time() - start_time\n",
+    "\n",
+    "print('Elapsed time for dictionary: {}'.format(end_time))\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "#tracking time for list\n",
+    "start_time = time.time()\n",
+    "\n",
+    "for i in range(len(big_list)):\n",
+    "    if i == 9999999:\n",
+    "        print(i)\n",
+    "\n",
+    "end_time = time.time() - start_time\n",
+    "\n",
+    "print('Elapsed time for list: {}'.format(end_time))\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "# Another time elapse. Membership Example.\n",
+    "start_time = time.time()\n",
+    "if 9999999 in d:\n",
+    "    print('yeah!')\n",
+    "end_time = time.time() - start_time\n",
+    "print('Elapsed time for dictionary lookup: {}'.format(end_time))\n",
+    "\n",
+    "\n",
+    "\n",
+    "start_time = time.time()\n",
+    "if 9999999 in d:\n",
+    "    print('yeah here as well!')\n",
+    "end_time = time.time() - start_time\n",
+    "print('Elapsed time for list lookup: {}'.format(end_time))\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Exercise #3 - Write a Function that asks someone's name and address, and then stores that into a dictionary, and continues to do so until they choose to 'quit'. Once they quit, the program should print all names and addresses. <br>\n",
+    "<p>\n",
+    "<b>Proper steps:</b><br>\n",
+    "step 1: write a function that takes in information and stores it in a dictionary<br>\n",
+    "step 2: define an empty dictionary to work with<br>\n",
+    "step 3: create our loop, which asks the user for information until they quit<br>\n",
+    "step 4: ask for the information, and store it into variables<br>\n",
+    "step 5: check if the user types quit<br>\n",
+    "step 5a: print out all information<br>\n",
+    "step 5b: break out of the loop<br>\n",
+    "step 6: if they didn't quit, add the information to the dictionary<br>\n",
+    "step 7: invoke the function by calling it\n",
+    "</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 105,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "What is your Name? type quit to quit:quit\n",
+      "What is your Address? type quit to quit:quit\n",
+      "{'Jordan': '123s 321w', 'Dani': '123s 321w', 'Opie': '123s 321w'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "from IPython.display import clear_output\n",
+    "\n",
+    "\n",
+    "\n",
+    "# step 1: write a function that takes in information and stores it in a dictionary\n",
+    "def writeInfo():\n",
+    "    \n",
+    "# step 2: define an empty dictionary to work with    \n",
+    "    d = {}\n",
+    "    \n",
+    "# step 3: create our loop, which asks the user for information until they quit    \n",
+    "    while True:\n",
+    "        \n",
+    "# step 4: ask for the information, and store it into variables\n",
+    "        name = input(\"What is your Name? type quit to quit:\")\n",
+    "        address = input(\"What is your Address? type quit to quit:\")\n",
+    "        \n",
+    "        \n",
+    "# step 5: check if the user types quit\n",
+    "# step 5a: print out all information\n",
+    "# step 5b: break out of the loop        \n",
+    "        if name == 'quit' or address == 'quit':\n",
+    "            print(d)\n",
+    "            break\n",
+    "        clear_output()\n",
+    "        \n",
+    "# step 6: if they didn't quit, add the information to the dictionary            \n",
+    "            \n",
+    "        d[name] = address\n",
+    "            \n",
+    "# step 7: invoke the function by calling it            \n",
+    "writeInfo()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Set <br>\n",
+    "<p>A Set is an unordered collection data type that is iterable (loop), mutable, and has no duplicate elements.<br>Major advantage is that it is highly optimized in checking if something is in the set, as opposed to checking if something is in a list.</p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Declaring"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 111,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "set()\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "{1, 2, 3, 4, 23, 43}"
+      ]
+     },
+     "execution_count": 111,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# set()\n",
+    "# no order {3, 2, 1} outputs as {1, 2, 3}\n",
+    "# Usually set orginizes from numerical to alphabetical also negitive to positive. set(list)Removes duplicates also.\n",
+    "\n",
+    "set_1 = set()\n",
+    "\n",
+    "set_1\n",
+    "print(set_1)\n",
+    "\n",
+    "\n",
+    "# Or adding your own values.\n",
+    "\n",
+    "set_2 = {1,2,3,45,67,0.5, -18, 1000}\n",
+    "\n",
+    "set_3 = {1,2,3,4,4,44444,4,4,4,4,4,4,4,4}\n",
+    "set_3\n",
+    "\n",
+    "# Or set(list) Extremely useful for removing duplicates.\n",
+    "\n",
+    "set_4 = set([1,2,3,4,43,23,4,4])\n",
+    "set_4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .add()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 114,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{-18, 0.5, 1, 2, 3, 5, 45, 67, 1000}"
+      ]
+     },
+     "execution_count": 114,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# set.add() Adds value in numerical order.\n",
+    "\n",
+    "set_2.add(5)\n",
+    "set_2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .remove()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 115,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{-18, 0.5, 1, 2, 3, 5, 67, 1000}"
+      ]
+     },
+     "execution_count": 115,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# removes by value\n",
+    "# set.remove()\n",
+    "# nums.remove(56)\n",
+    "\n",
+    "set_2.remove(45)\n",
+    "set_2\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .union() "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 120,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{1, 2, 3, 4, 5, 6, 7, 8}"
+      ]
+     },
+     "execution_count": 120,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Returns a union of two sets, can also use '|' or set.union(set)\n",
+    "# joins all numbers, gets rid of duplicates\n",
+    "\n",
+    "s1 = {1,2,3,4,5}\n",
+    "s2 = {3,4,5,6,7,8}\n",
+    "\n",
+    "s3 = s1.union(s2)\n",
+    "\n",
+    "# What its doing-- {1,2,3,4,5} + {3,4,5,6,7,8}\n",
+    "\n",
+    "s3\n",
+    "\n",
+    "\n",
+    "# OR using Pipe | to union.\n",
+    "\n",
+    "s4 = s1|s2 \n",
+    "s4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .intersection()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 125,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{3, 4, 5}\n",
+      "{3, 4, 5}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Returns an intersection of two sets, can also use '&'\n",
+    "# only takes similar elements from both sets\n",
+    "\n",
+    "s1 = {1,2,3,4,5}\n",
+    "s2 = {3,4,5,6,7,8}\n",
+    "\n",
+    "\n",
+    "s6 = s1.intersection(s2)\n",
+    "\n",
+    "print(s6)\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "# OR &\n",
+    "\n",
+    "s7 = s1 & s2\n",
+    "print(s7)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .difference()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 126,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{1, 2}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Returns a set containing all the elements of invoking set that are not in the second set, can also use '-'\n",
+    "# only takes values from the first set that are not in the second set\n",
+    "# order matters\n",
+    "\n",
+    "s1 = {1,2,3,4,5}\n",
+    "s2 = {3,4,5,6,7,8}\n",
+    "\n",
+    "s8 = s1 - s2\n",
+    "print(s8)\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### .clear()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 129,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "set()\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Empties the whole set\n",
+    "# set.clear()-- Takes all items out, leaves you with {empty set} or (set) waited to be added to.\n",
+    "\n",
+    "s9 = {1,3,4,6,45,23}\n",
+    "s9.clear()\n",
+    "\n",
+    "print(s9)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Frozenset <br>\n",
+    "<p>Frozen sets are immutable objects that only support methods and operators that produce a result without affecting the frozen set or sets to which they are applied.</p><br><b>Unique & Immutable</b>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 131,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "AttributeError",
+     "evalue": "'frozenset' object has no attribute 'remove'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-131-edda7898b9a3>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0mfs\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mfrozenset\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m3\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m6\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m8\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m10\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m10\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m3\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0mfs\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 5\u001b[0;31m \u001b[0mfs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mremove\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m3\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;31mAttributeError\u001b[0m: 'frozenset' object has no attribute 'remove'"
+     ]
+    }
+   ],
+   "source": [
+    "# frozenset([]) -- Great for saving information that you want to save and never go away.\n",
+    "\n",
+    "fs = frozenset([1,3,6,8,10,10,3])\n",
+    "fs\n",
+    "fs.remove(3) #Cant add or remove. Will get error.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Modules"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Importing Entire Modules"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 134,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.141592653589793"
+      ]
+     },
+     "execution_count": 134,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Python file that you have access to.\n",
+    "# import packageName or packageName import.\n",
+    "# Import math\n",
+    "import math\n",
+    "\n",
+    "math.pi\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Importing Methods Only"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 136,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3"
+      ]
+     },
+     "execution_count": 136,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# from 'xxx' import 'xxx'\n",
+    "from math import floor, pi\n",
+    "\n",
+    "floor(pi)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Using the 'as' Keyword"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# from 'xxx' import 'xxx' as 'xxx' or import 'xxx' as 'xxx'\n",
+    "# from math import floor as f\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##### Creating a Module"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 140,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello Mr/Ms Jordan...we've been waiting for you!\n",
+      "Hello Mr/Ms Floyd...we've been waiting for you!\n"
+     ]
+    }
+   ],
+   "source": [
+    "import module\n",
+    "\n",
+    "module.printName('Jordan')\n",
+    "\n",
+    "# Similarly - we can import a function directly\n",
+    "\n",
+    "from module import printName\n",
+    "\n",
+    "printName('Floyd')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Exercises"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1) Build a Shopping Cart <br>\n",
+    "<p><b>You can use either lists or dictionaries. The program should have the following capabilities:</b><br><br>\n",
+    "1) Takes in input <br>\n",
+    "2) Stores user input into a dictionary or list <br>\n",
+    "3) The User can add or delete items <br>\n",
+    "4) The User can see current shopping list <br>\n",
+    "5) The program Loops until user 'quits' <br>\n",
+    "6) Upon quiting the program, print out all items in the user's list <br>\n",
+    "</p>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2) Create a Module in VS Code and Import It into jupyter notebook <br>\n",
+    "<p><b>Module should have the following capabilities:</b><br><br>\n",
+    "1) Has a function to calculate the square footage of a house <br>\n",
+    "    <b>Reminder of Formula: Length X Width == Area<br>\n",
+    "        <hr>\n",
+    "2) Has a function to calculate the circumference of a circle <br><br>\n",
+    "<b>Program in Jupyter Notebook should take in user input and use imported functions to calculate a circle's circumference or a houses square footage</b>\n",
+    "</p>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "####  SHOPPING LIST   ####\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "from IPython.display import clear_output\n",
+    "\n",
+    "\n",
+    "def shoppingList():\n",
+    "    shoppingCart = []\n",
+    "    \n",
+    "    while True:\n",
+    "        \n",
+    "        \n",
+    "        welcome = input(\"Welcome, What would you like to do? add / remove / show / clear your cart / checkout: \")\n",
+    "        if welcome == 'add':\n",
+    "            item = input(\"What grocery item would you like to add? \")\n",
+    "            shoppingCart.append(item)\n",
+    "                      \n",
+    "        if welcome == 'remove':\n",
+    "            remove = input(\"What would you like to remove from your cart? \")\n",
+    "            shoppingCart.remove(remove)\n",
+    "                     \n",
+    "        \n",
+    "        \n",
+    "        if welcome == 'clear':\n",
+    "            shoppingCart.clear()  \n",
+    "            \n",
+    "        if welcome == 'checkout':\n",
+    "            print(\"Here are your groceries! Thanks for shopping with us! -\")\n",
+    "            print(shoppingCart)\n",
+    "            break\n",
+    "        clear_output()\n",
+    "\n",
+    "        if welcome == 'show':\n",
+    "            print(\"Your shopping cart has these items in it: \")\n",
+    "            print(shoppingCart)\n",
+    "            \n",
+    "\n",
+    "\n",
+    "shoppingList()\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "\n",
+    "from model import circumference\n",
+    "\n",
+    "circumference()\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
